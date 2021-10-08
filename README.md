@@ -123,6 +123,7 @@ Take a look at some of the amazing projects built with this template. Want to ha
 ### Still To-Do
 
 - [ ] Add tests (Spectron) (Looking for PRs if possible)
+- [ ] Debug electron-log (Looking for PRs if possible)
 
 <br/>
 
