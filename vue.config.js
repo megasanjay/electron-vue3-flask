@@ -6,6 +6,7 @@ module.exports = {
       builderOptions: {
         // afterPack: "./scripts/postbuild.js",
         appId: "com.megasanjay.electronvueflask",
+        afterSign: "./scripts/notarize.js",
         asar: true,
         generateUpdatesFilesForAllChannels: true,
         files: ["**/*", "!pyflask/", "!build/", "!api.spec"],
