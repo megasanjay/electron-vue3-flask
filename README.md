@@ -50,7 +50,9 @@ python pyflask/api.py
 
 To build the complete application, you will need to build the python executable and the Electron portion separately. 
 
-`Note:` You will not be able to do cross compatible builds for MacOS, Linux and Windows. The Python executable will be OS specific so you will need to build on each target OS separately. For macOS you will need an Apple Developer Certificate. You can get one of these [here](https://developer.apple.com/support/certificates/).
+`Note:` You will not be able to do cross compatible builds for MacOS, Linux and Windows. The Python executable will be OS specific so you will need to build on each target OS separately. For macOS you will need an Apple Developer Certificate. You can get one of these [here](https://developer.apple.com/support/certificates/). 
+
+`Note:` I have also verified that notarization works for this application use case but your mileage may vary. Please verify this on your application and let me know how it works. 
 
 ### Create Python executable
 
