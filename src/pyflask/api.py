@@ -4,7 +4,7 @@ from calc import calc
 from flask_cors import CORS
 from flask_restx import Api, Resource, reqparse
 
-API_VERSION = "1.0.1"
+API_VERSION = "1.1.0"
 
 app = Flask(__name__)
 CORS(app)
@@ -34,14 +34,17 @@ class HelloWorld(Resource):
 
 # Request parser documentation can be found here: https://flask-restx.readthedocs.io/en/latest/parsing.html
 
+calculator = api.namespace("calculator", description="Calculator operations")
 
-@api.route("/add", endpoint="addition")
+
+@calculator.route("/add", endpoint="addition")
 class Add(Resource):
-    @api.doc(
+    @calculator.doc(
         responses={200: "Success", 400: "Validation error"},
         params={"expression": "Formula to compute"},
     )
     def post(self):
+        """Takes in an arithmetic expression and returns the result"""
         parser = reqparse.RequestParser()
         parser.add_argument(
             "expression",

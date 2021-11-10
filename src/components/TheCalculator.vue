@@ -51,7 +51,7 @@ export default {
       if (this.inputExpression != "") {
         let reqObj = { expression: this.inputExpression };
         axios
-          .post(`${this.SERVERURL}/add`, reqObj)
+          .post(`${this.SERVERURL}/calculator/add`, reqObj)
           .then((response) => {
             this.result = `Result = ${response.data}`;
           })

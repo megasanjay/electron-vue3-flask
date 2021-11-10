@@ -9,8 +9,9 @@
 import { app } from "@electron/remote";
 import semver from "semver";
 import axios from "axios";
+import axiosRetry from "axios-retry";
 
-const MIN_API_VERSION = "1.0.1";
+const MIN_API_VERSION = "1.1.0";
 
 import TheCalculator from "./components/TheCalculator.vue";
 
@@ -23,16 +24,34 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get(`${this.SERVERURL}/api_version`)
+    const client = axios.create({ baseURL: `${this.SERVERURL}` });
+
+    client
+      .get("/echo", {
+        "axios-retry": {
+          retries: 5,
+          retryDelay: axiosRetry.exponentialDelay,
+        },
+      })
       .then((response) => {
-        if (
-          semver.lte(semver.clean(MIN_API_VERSION), semver.clean(response.data))
-        ) {
-          console.log("Api Version satisfied");
-        } else {
-          alert("Invalid API Version");
-        }
+        console.log(response.data);
+        axios
+          .get(`${this.SERVERURL}/api_version`)
+          .then((response) => {
+            if (
+              semver.lte(
+                semver.clean(MIN_API_VERSION),
+                semver.clean(response.data)
+              )
+            ) {
+              console.log("API version satisfied");
+            } else {
+              alert("Invalid API version");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
