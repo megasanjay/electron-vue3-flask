@@ -114,7 +114,7 @@ In your `src/index.css` file remove the following lines:
 
 For the python portion of this application, Flask-RESTX is used to generate the API specific portion. In this example template, I have used a very small subsection of all the features it provides but you are welcome to read more about all the provided options in their documentation. To learn more about Flask-RESTX, click [here](https://flask-restx.readthedocs.io/en/latest/). 
 
-One of the biggest reasons for using this library was the automatic generation of API documentation. If you are working in a team and have different front-end and back-end developers, this should allow you to document your application as you go through your development cycle. To view the documentation, I have set it up under the `/docs` endpoint. This can be accessed by either running `yarn electron:serve` (for the full application) or just running `python pyflask/api.py`. You can then visit the url at [http://127.0.0.1:5000/docs](http://127.0.0.1:5000/docs) and explore the Swagger documentation.
+One of the biggest reasons for using this library was the automatic generation of API documentation. If you are working in a team and have different front-end and back-end developers, this should allow you to document your application as you go through your development cycle. To view the documentation, I have set it up under the `/docs` endpoint. This can be accessed by either running `yarn electron:serve` (for the full application) or just running `python pyflask/api.py` (you can also use `yarn python:dev` for this purpose and have just one .env file). You can then visit the url at [http://127.0.0.1:5000/docs](http://127.0.0.1:5000/docs) and explore the Swagger documentation.
 
 ### Made with Electron, Vue and Flask
 
