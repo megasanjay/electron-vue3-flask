@@ -1,6 +1,6 @@
 # electron-vue3-flask Template
 
-This is a template that creates an Electron application with a Flask backend and uses Vue3 and TailwindCSS ([optional](#removing-tailwindcss)) for the frontend. Your backend api will be using Flask-RESTX for easier API development and automatic Swagger documentation. At the current time, this application template uses Electron.js version 13.0+ as it is the most recent version of electron that I was able to use with Vue. I will update this template with later versions when supported.
+This is a template that creates an Electron application with a Flask backend and uses Vue3 and TailwindCSS ([optional](#removing-tailwindcss)) for the frontend. Your backend api will be using Flask-RESTX for easier API development and automatic Swagger documentation. At the current time, this application template uses Electron.js version 15.0+ as it is the most recent version of electron that I was able to use with Vue. I will update this template with later versions when supported.
 
 ### Project Use Cases
 
