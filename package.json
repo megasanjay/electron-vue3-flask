@@ -72,5 +72,8 @@
   },
   "keywords": [],
   "author": "Sanjay Soundarajan",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "^16.13.0"
+  }
 }
