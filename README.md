@@ -2,6 +2,8 @@
 
 This is a template that creates an Electron application with a Flask backend and uses Vue3 and TailwindCSS ([optional](#removing-tailwindcss)) for the frontend. Your backend api will be using Flask-RESTX for easier API development and automatic Swagger documentation. At the current time, this application template uses Electron.js version 15.0+ as it is the most recent version of electron that I was able to use with Vue. I will update this template with later versions when supported.
 
+Star this template if it has been helpful :)
+
 ### Project Use Cases
 
 In the current world of serverless functions and cloud hosted servers, it is nice to have an always accessible backend server but if you want to run some code that uses quite a lot of processing power, this can be a challenge. If your application can have some processing handled by Python on the user's computer, this is a good alternative to have. Some potential use cases are listed below:
