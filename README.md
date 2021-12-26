@@ -128,6 +128,9 @@ Take a look at some of the amazing projects built with this template. Want to ha
 
 - [ ] Add tests (Spectron) (Looking for PRs if possible)
 - [ ] Debug electron-log (Looking for PRs if possible)
+- [ ] Update to Electron 16+
+- [ ] Update Vue CLI
+- [ ] Upgrade to TailwindCSS 3
 
 <br/>
 
