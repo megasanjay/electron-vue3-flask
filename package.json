@@ -42,7 +42,7 @@
     "electron-notarize": "^1.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "postcss": "^7",
+    "postcss": "^8",
     "prettier": "^2.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue-cli-plugin-electron-builder": "~2.1.1"
