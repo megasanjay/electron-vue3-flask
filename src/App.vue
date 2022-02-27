@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { app } from "@electron/remote";
 import semver from "semver";
 import axios from "axios";
 import axiosRetry from "axios-retry";
@@ -20,7 +19,7 @@ export default {
   components: { TheCalculator },
   data() {
     return {
-      appPath: app.getAppPath(),
+      appPath: "",
     };
   },
   mounted() {
@@ -56,6 +55,12 @@ export default {
       .catch((error) => {
         console.error(error);
       });
+
+    window.ipcRenderer.send("getAppPath");
+
+    window.ipcRenderer.on("getAppPathResponse", (appPath) => {
+      this.appPath = appPath;
+    });
   },
 };
 </script>

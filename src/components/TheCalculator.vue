@@ -27,6 +27,7 @@
     >
       Calculate
     </button>
+
     <br />
     <span class="label"> {{ result }}</span>
   </div>
