@@ -1,7 +1,7 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
-import { enable as enableWebContents } from "@electron/remote/main";
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
+// import { enable as enableWebContents } from "@electron/remote/main";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import { autoUpdater } from "electron-updater";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
@@ -14,7 +14,7 @@ autoUpdater.logger.transports.file.level = "info";
 const isDevelopment = process.env.NODE_ENV !== "production";
 const path = require("path");
 
-require("@electron/remote/main").initialize();
+// require("@electron/remote/main").initialize();
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -24,6 +24,8 @@ protocol.registerSchemesAsPrivileged([
 // const PY_DIST_FOLDER = "pyflaskdist";
 const PY_FOLDER = "pyflask";
 const PY_MODULE = "api";
+
+let win;
 
 let pyProc = null;
 const pyPort = "5000"; // Flask default port
@@ -76,20 +78,28 @@ const createPyProc = () => {
 };
 
 async function createWindow() {
+  console.log(
+    `nodeIntegration: ${
+      process.env.ELECTRON_NODE_INTEGRATION
+    }, contextIsolation: ${!process.env.ELECTRON_NODE_INTEGRATION}`
+  );
+
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      // Use pluginOptions.nodeIntegration, leave this alone
+      // Use pluginOptions.nodeIntegration, leave this alone for recommended security.
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
-      enableRemoteModule: true,
+      // nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      // contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
+      // enableRemoteModule: true,
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
-  enableWebContents(win.webContents);
+  // Used to enable to remote modulue in renderer. 
+  // enableWebContents(win.webContents);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -191,6 +201,12 @@ autoUpdater.on("update-downloaded", () => {
   // exitPyProc(process.pid).then(() => {
   // autoUpdater.quitAndInstall();
   // });
+});
+
+// eslint-disable-next-line no-unused-vars
+ipcMain.on("getAppPath", async (_event) => {
+  const appPath = app.getAppPath();
+  win.webContents.send("getAppPathResponse", appPath);
 });
 
 // Exit cleanly on request from parent process in development mode.

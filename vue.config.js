@@ -2,7 +2,8 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       externals: ["electron-log"],
-      nodeIntegration: true,
+      nodeIntegration: false,
+      preload: "src/preload.js",
       builderOptions: {
         // afterPack: "./scripts/postbuild.js",
         appId: "com.megasanjay.electronvueflask",
