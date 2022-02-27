@@ -17,6 +17,7 @@ module.exports = {
         },
         mac: {
           target: ["dmg", "zip"],
+          arch: ["x64", "arm64"],
           icon: "./src/assets/app-icons/macAppIcon.png",
           extraResources: [{ from: "./src/pyflaskdist/api" }],
           darkModeSupport: false,
