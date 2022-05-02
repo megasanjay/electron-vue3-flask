@@ -126,7 +126,7 @@ There is a large debate on what the best practices for a secure Electron applica
 
 Take a look at some of the amazing projects built with this template. Want to have your own project listed? Feel free to add your project at the bottom of the list below then submit a pull request.
 
-- Your project here
+- [FAIRshare](https://fairdataihub.org/fairshare) - Your one-stop tool for rapidly curating and sharing biomedical research data and software according to applicable FAIR guidelines
 
 ### Still To-Do
 
