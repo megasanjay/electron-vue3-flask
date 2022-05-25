@@ -28,8 +28,7 @@ class HelloWorld(Resource):
     @api.response(200, "Success")
     @api.response(400, "Validation Error")
     def get(self):
-        response = "Server active!!"
-        return response
+        return "Server active!!"
 
 
 # Request parser documentation can be found here: https://flask-restx.readthedocs.io/en/latest/parsing.html
@@ -58,10 +57,8 @@ class Add(Resource):
 
         args = parser.parse_args()
         formula = args["expression"]
-        response = str(calc(formula))
-
         # restx will automatically jsonify dictionaries. You don't need to import the jsonify method from flask
-        return response
+        return str(calc(formula))
 
 
 # 5000 is the flask default port. You can change it to something else if you want.

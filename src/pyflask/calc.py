@@ -57,7 +57,7 @@ def calc(s):
             if isUnary:
                 opStk.append('#')
             else:
-                while (len(opStk) > 0):
+                while opStk:
                     if ((getAssoc(s[i]) == "LEFT" and getPrec(s[i]) <= getPrec(opStk[-1])) or 
                         (getAssoc(s[i]) == "RIGHT" and getPrec(s[i]) < getPrec(opStk[-1]))):
                         op = opStk.pop()
@@ -75,7 +75,7 @@ def calc(s):
             opStk.append(s[i])
             isUnary = True
         else:
-            while (len(opStk) > 0):
+            while opStk:
                 op = opStk.pop()
                 if (op == '('):
                     break
@@ -87,7 +87,7 @@ def calc(s):
                     numStk.append(getBin(op, a, b))
         i += 1
 
-    while (len(opStk) > 0):
+    while opStk:
         op = opStk.pop()
         if op == '#':
             numStk.append(-numStk.pop())
@@ -114,5 +114,5 @@ if __name__ == '__main__':
     ]
     for s in ss:
         res = calc(s)
-        print('{} = {}'.format(res, s))
+        print(f'{res} = {s}')
     
