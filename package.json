@@ -20,7 +20,7 @@
   "main": "background.js",
   "dependencies": {
     "@electron/remote": "^2.0.0",
-    "axios": "^0.21.2",
+    "axios": "^0.28.0",
     "axios-retry": "^3.2.4",
     "core-js": "^3.6.5",
     "electron-log": "^4.4.1",
